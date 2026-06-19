@@ -18,6 +18,7 @@
       
       #media
       vlc
+      deluge
 
       #gaming lol
       steam 
@@ -29,6 +30,8 @@
       #productivity 
       thunderbird
       obsidian
+      tuxedo
+
     ];
   };
 }

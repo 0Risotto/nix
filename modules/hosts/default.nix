@@ -8,6 +8,7 @@
       self.nixosModules.userApps
       self.nixosModules.displayManager
       self.nixosModules.appearanceDefaults
+      self.nixosModules.audio
     ];
   };
 
