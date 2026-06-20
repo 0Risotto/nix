@@ -5,10 +5,10 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
-
     silent-sddm.url = "github:uiriansan/SilentSDDM";
     lanzaboote.url = "github:nix-community/lanzaboote";
+
+    noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);

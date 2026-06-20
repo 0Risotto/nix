@@ -11,7 +11,7 @@
       vscode
       zed-editor
       bibata-cursors      
-      
+ vesktop     
       #terminal stuff
       git
       gh
