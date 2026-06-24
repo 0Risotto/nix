@@ -10,6 +10,7 @@
     
     settings = { 
       hostname = "legion";
+      secureBoot = true;
       users = {
         legion = {
           isAdmin= true;

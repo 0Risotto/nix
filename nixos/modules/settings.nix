@@ -7,6 +7,12 @@
         description = "Machine's hostname";
       };
       
+      secureBoot = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether to use Secure Boot with Lanzaboote (requires enrolling keys)";
+      };
+
       users = lib.mkOption {
         type = lib.types.attrsOf (lib.types.submodule {
           options = {

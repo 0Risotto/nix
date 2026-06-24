@@ -19,6 +19,45 @@
       if test "$TERM" = "xterm-kitty"
         alias ssh 'kitten ssh'
       end
+
+      set -g FLAKE "$HOME/git/dotties/nixos"
+
+      function dev --inherit-variable FLAKE
+        if test (count $argv) -eq 0
+          nix develop "$FLAKE#default"
+        else if string match -qr -- '^(--help|-h|list)$' "$argv[1]"
+          echo "Available devshells:"
+          nix eval "$FLAKE#devShells.x86_64-linux" --apply 'builtins.attrNames' 2>/dev/null \
+            | string match -ra '\w+' \
+            | while read -l shell
+              echo "    $shell"
+            end
+          echo ""
+          echo "Usage:"
+          echo "  dev <name>           Enter a single devshell"
+          echo "  dev <name> <name>    Combine multiple devshells"
+          echo "  dev all              Everything"
+          echo "  dev fullstack        web + rust + go + java + backend"
+          echo "  dev data             python + go"
+          echo "  dev cloud            devops + go"
+        else if test (count $argv) -eq 1
+          nix develop "$FLAKE#"$argv[1]
+        else
+          # Combine multiple devshells dynamically
+          set -l shellList (string join ' ' $argv)
+          set -l tmpfile (mktemp /tmp/devshell.XXXXXX.nix)
+          echo "let" > $tmpfile
+          echo "  flake = builtins.getFlake \"$FLAKE\";" >> $tmpfile
+          echo "  pkgs = import flake.inputs.nixpkgs { system = \"x86_64-linux\"; };" >> $tmpfile
+          echo "  shells = with flake.devShells.x86_64-linux; [ $shellList ];" >> $tmpfile
+          echo "in pkgs.mkShell {" >> $tmpfile
+          echo "  inputsFrom = shells;" >> $tmpfile
+          echo "  shellHook = \"exec fish\";" >> $tmpfile
+          echo "}" >> $tmpfile
+          nix develop -f $tmpfile
+          rm $tmpfile
+        end
+      end
     '';
   };
 

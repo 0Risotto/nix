@@ -11,6 +11,8 @@
     
     # Terminal tools
     git
+    nodejs
+    pnpm
     gh
     starship
     eza
@@ -38,5 +40,6 @@
     cloudflare-warp
     
     # AI
+    pi-coding-agent
   ];
 }

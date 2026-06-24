@@ -34,6 +34,7 @@
         ./modules/features/noctalia.nix
         ./modules/features/flatpak.nix
         ./modules/home/default.nix
+        ./modules/devshells/default.nix
       ];
     };
 }
