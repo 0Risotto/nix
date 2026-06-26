@@ -1,1 +1,18 @@
-/nix/store/cd0zzsl4x4jcvvpl6bxw9i59drlrjk4x-home-manager-files/.config/niri/cfg/rules.kdl
+window-rule {
+    geometry-corner-radius 18
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+window-rule {
+    match app-id="^cs2$"
+    open-floating true
+}
+window-rule {
+    match title="Counter-Strike 2"
+    open-floating true
+}

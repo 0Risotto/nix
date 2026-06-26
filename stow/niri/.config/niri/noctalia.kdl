@@ -1,1 +1,35 @@
-/nix/store/cd0zzsl4x4jcvvpl6bxw9i59drlrjk4x-home-manager-files/.config/niri/noctalia.kdl
+layout {
+
+    focus-ring {
+        active-color   "#adc6ff"
+        inactive-color "#111319"
+        urgent-color   "#ffb4ab"
+    }
+
+    border {
+        active-color   "#adc6ff"
+        inactive-color "#111319"
+        urgent-color   "#ffb4ab"
+    }
+
+    shadow {
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#adc6ff"
+        inactive-color "#3671d3"
+        urgent-color   "#ffb4ab"
+    }
+
+    insert-hint {
+        color "#adc6ff80"
+    }
+}
+
+recent-windows {
+    highlight {
+        active-color "#adc6ff"
+        urgent-color "#ffb4ab"
+    }
+}
