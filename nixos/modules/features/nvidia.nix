@@ -1,11 +1,8 @@
 _: {
   flake.nixosModules.nvidia =
-    { config, ... }:
-    {
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
+    { config, lib, ... }:
+    lib.mkIf config.settings.nvidia {
+      hardware.graphics.enable32Bit = true;
 
       services.xserver.videoDrivers = [ "nvidia" ];
 

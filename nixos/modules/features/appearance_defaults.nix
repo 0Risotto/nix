@@ -2,16 +2,16 @@ _:
 
 {
   flake.nixosModules.appearanceDefaults =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
 
     {
-      i18n.defaultLocale = "en_US.UTF-8";
+      i18n.defaultLocale = config.settings.locale;
 
       i18n.extraLocaleSettings = builtins.listToAttrs (
         map
           (k: {
             name = k;
-            value = "en_US.UTF-8";
+            value = config.settings.locale;
           })
           [
             "LC_ADDRESS"
@@ -26,7 +26,7 @@ _:
           ]
       );
 
-      time.timeZone = "Asia/Amman";
+      time.timeZone = config.settings.timezone;
 
       fonts = {
         packages = with pkgs; [

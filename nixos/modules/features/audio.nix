@@ -1,7 +1,12 @@
 _: {
   flake.nixosModules.audio =
-    { pkgs, ... }:
     {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    lib.mkIf config.settings.audio {
       security.rtkit.enable = true;
 
       services.pipewire = {

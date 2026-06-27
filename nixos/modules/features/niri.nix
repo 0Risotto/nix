@@ -1,7 +1,12 @@
 _: {
   flake.nixosModules.niri =
-    { pkgs, ... }:
     {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    lib.mkIf config.settings.niri {
       programs.niri.enable = true;
 
       environment.systemPackages = with pkgs; [

@@ -6,6 +6,86 @@ _: {
         description = "Machine's hostname";
       };
 
+      timezone = lib.mkOption {
+        type = lib.types.str;
+        default = "UTC";
+        description = "System timezone (e.g. America/New_York, Europe/London)";
+      };
+
+      locale = lib.mkOption {
+        type = lib.types.str;
+        default = "en_US.UTF-8";
+        description = "System locale";
+      };
+
+      networking = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable NetworkManager";
+      };
+
+      bluetooth = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable Bluetooth";
+      };
+
+      printing = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable printing (CUPS)";
+      };
+
+      sudo = lib.mkOption {
+        type = lib.types.submodule {
+          options = {
+            wheelNeedsPassword = lib.mkOption {
+              type = lib.types.bool;
+              default = false;
+              description = "Whether sudo requires a password for wheel users";
+            };
+          };
+        };
+        default = { };
+        description = "Sudo configuration";
+      };
+
+      audio = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable PipeWire audio (rtkit, ALSA, Pulse, JACK)";
+      };
+
+      flatpak = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable Flatpak support";
+      };
+
+      displayManager = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable SDDM display manager with SilentSDDM theme";
+      };
+
+      niri = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable the Niri scrollable-tiling Wayland compositor";
+      };
+
+      noctalia = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable Noctalia app store and cachix cache";
+      };
+
+      nvidia = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable NVIDIA GPU drivers (offload mode for hybrid laptops)";
+      };
+
       efi = lib.mkOption {
         type = lib.types.submodule {
           options = {

@@ -27,16 +27,17 @@
       imports = [
         ./modules/parts.nix
         ./modules/settings.nix
+        ./modules/hosts/common.nix
         ./modules/hosts/default.nix
         ./modules/hosts/legion/configuration.nix
-        ./modules/hosts/legion/efi.nix
         ./modules/hosts/legion/hardware.nix
-        ./modules/hosts/legion/nvidia.nix
+        ./modules/features/efi.nix
+        ./modules/features/nvidia.nix
         ./modules/features/display_manager.nix
         ./modules/features/system_apps.nix
         ./modules/features/appearance_defaults.nix
         ./modules/features/audio.nix
-        ./modules/features/niri/niri.nix
+        ./modules/features/niri.nix
         ./modules/features/noctalia.nix
         ./modules/features/flatpak.nix
         ./modules/home/default.nix
