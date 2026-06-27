@@ -41,5 +41,8 @@
 
     # AI
     pi-coding-agent
+
+    #Virtual Machine
+    gnome-boxes
   ];
 }
